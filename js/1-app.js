@@ -446,33 +446,28 @@ var App = {
                 if ( ! App.empty(hedef)){hedef='#'+hedef; }
             }
 
+            if (App.changeItem === true && new URL(link).searchParams.get('output') !== 'modal' ){
 
-
-            if (App.changeItem===true){
                 // ------------------------------------------------- Değişiklik Varsa Sayfadan Ayrılıyorsa Alert
-                window.bootbox.dialog({
-                    message: "Değişiklikleri kayıt etmediniz! Yine de sayfadan ayrılmak istiyor musunuz?",
-                    title: "Kayıt Etmediniz!",
-                    buttons: {
-                        success: {
-                            label: "Hayır, sayfada kal.",
-                            className: "btn-success",
-                            callback: function() {
-                                return true;
-                            }
-                        },
-                        danger: {
-                            label: "Evet, sayfadan ayrıl.",
-                            className: "btn-danger",
-                            callback: function() {
-                                App.changeItem=false;
-                                App.goAjaxUrl(link,false);
-                            }
-                        }
+                Swal({
+                    title: 'Kayıt Etmediniz!',
+                    html: 'Değişiklikleri kayıt etmediniz! Yine de sayfadan ayrılmak istiyor musunuz?',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: "Sayfadan Ayrıl!",
+                    cancelButtonText: "Sayfada Kal!"
+                }).then(function(result) {
+
+                    if ( result.value ) {
+                        App.changeItem = false;
+                        App.goAjaxUrl(link,false);
                     }
+
                 });
-                return false;
                 // ------------------------------------------------- Değişiklik Varsa Sayfadan Ayrılıyorsa Alert
+
             }else{
                 App.goAjaxUrl(link, false, hedef, method);
             }

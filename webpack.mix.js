@@ -47,8 +47,6 @@ mix.scripts([
     'node_modules/select2/dist/js/select2.full.min.js',
     'node_modules/select2/dist/js/i18n/tr.js',
 
-    'node_modules/bootbox/bootbox.min.js',
-
     'node_modules/sweetalert2/dist/sweetalert2.all.min.js',
 
     'node_modules/autonumeric/autoNumeric-min.js',
