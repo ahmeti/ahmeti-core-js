@@ -1,0 +1,14 @@
+#mce-modal-block{
+    z-index: 90000000 !important;
+}
+.mce-container.mce-panel.mce-floatpanel.mce-window.mce-in{
+    z-index: 90000001 !important;
+}
+
+.mce-container.mce-panel.mce-floatpanel.mce-popover.mce-bottom{
+    z-index: 90000001 !important;
+}
+
+.mce-container.mce-panel.mce-floatpanel.mce-menu.mce-animate.mce-menu-align.mce-in{
+    z-index: 90000001 !important;
+}

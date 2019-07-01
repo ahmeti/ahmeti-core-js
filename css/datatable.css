@@ -1,0 +1,109 @@
+.table .td-nowrap {
+    white-space:nowrap !important;
+}
+.table th {
+    white-space:nowrap !important;
+}
+
+.table .td-normal {
+    min-width: 200px;
+    max-width: 200px;
+    white-space: normal !important;
+}
+
+
+
+/*  Mobile */
+.text-red{
+    color: red;
+}
+
+a.text-red,
+a.text-red:hover{
+    color: red;
+    text-decoration: underline;
+}
+
+.text-green{
+    color: darkgreen;
+}
+a.text-green,
+a.text-green:hover{
+    color: darkgreen;
+    text-decoration: underline;
+}
+
+.text-blue{
+    color: blue;
+}
+a.text-blue,
+a.text-blue:hover{
+    color: blue;
+    text-decoration: underline;
+}
+
+.text-orange{
+    color: darkorange;
+}
+a.text-orange,
+a.text-orange:hover{
+    color: darkorange;
+    text-decoration: underline;
+}
+
+table.dataTable tbody td {
+    vertical-align: middle;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before{
+    top:4px;
+}
+
+table.dataTable .label {
+    font-size: 0.85em;
+}
+
+table.dataTable .btn-xs {
+    padding: 0 5px;
+    font-size: 0.85em;
+    vertical-align: inherit;
+}
+
+
+.dataTable {
+    font-size: 0.9em;
+}
+
+/* Tablet */
+@media only screen and (min-width : 768px) {
+
+
+}
+
+/* Desktops */
+@media only screen and (min-width : 992px) {
+
+
+}
+
+
+.dataTable .form-control, .dataTable .form-group{
+    display: block;
+    width: 100%
+}
+
+.table-border th {
+    border-top: 1px solid #aaaaaa !important;
+    background-color: #ffffcc;
+    border-bottom: 1px solid #aaaaaa  !important;
+    border-right: 1px solid #dddddd  !important;
+}
+
+.table-border th:first-child {
+    border-left: 1px solid #dddddd  !important;
+}
+
+table.dataTable.no-footer{
+    border-bottom: 1px solid #aaaaaa;
+}

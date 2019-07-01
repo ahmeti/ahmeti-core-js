@@ -1,0 +1,5 @@
+.color-red{ color: red }
+.color-red-hover:hover, .color-red-hover:active, .color-red-hover:focus{ color: red }
+
+.color-green{ color: green }
+.color-green-hover:hover, .color-green-hover:active, .color-green-hover:focus{ color: green }

@@ -1,0 +1,34 @@
+
+.dataTableDropDown a{
+    padding: 3px 10px !important;
+}
+
+.dataTableDropDown .glyphicon{
+    margin-right: 3px !important;
+}
+
+ul.multiselect-container {
+    width: 100%
+}
+
+ul.multiselect-container label{
+    padding: 0 0 0 20px !important;
+    min-height: 17px !important;
+    font-size: 0.85em !important
+}
+ul.multiselect-container input[type=checkbox]{
+    top: -2px;
+}
+
+button.multiselect {
+    border-color: #aaa !important;
+    text-align: left;
+}
+
+button.multiselect b.caret {
+    float: right;margin-top: 7px;
+}
+
+span.multiselect-selected-text{
+    color: #555;
+}

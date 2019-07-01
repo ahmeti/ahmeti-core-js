@@ -1,0 +1,42 @@
+{
+  "name": "laravel-core-js",
+  "version": "1.0.0",
+  "description": "Laravel Core JS",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/ahmeti/core-js"
+  },
+  "author": "Ahmet Imamoglu",
+  "license": "MIT",
+  "devDependencies": {
+    "autonumeric": "^1.9.46",
+    "bootstrap": "^3.4.0",
+    "bootstrap-datepicker": "^1.8.0",
+    "bootstrap-multiselect": "^0.9.13-1",
+    "bootstrap-tabdrop-ro": "^1.0.0",
+    "bootstrap-timepicker": "^0.5.2",
+    "chart.js": "^2.8.0",
+    "cross-env": "^5.2.0",
+    "datatables.net-dt": "^1.10.19",
+    "datatables.net-responsive-dt": "^2.2.3",
+    "font-awesome": "^4.0.0",
+    "fullcalendar": "^3.9.0",
+    "history.js": "^1.8.0",
+    "jquery": "^3.4.0",
+    "jquery-form": "^4.2.2",
+    "laravel-mix": "^4.0.16",
+    "metismenu": "^2.7.9",
+    "moment": "^2.23.0",
+    "select2": "^4.0.6-rc.1",
+    "sweetalert2": "^7.33.1",
+    "tinymce": "4.8.2"
+  }
+}
