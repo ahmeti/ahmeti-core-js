@@ -13,6 +13,7 @@ let mix = require('laravel-mix');
 
 mix.copy('node_modules/font-awesome/fonts', 'dist/fonts');
 mix.copy('node_modules/datatables.net-dt/images', 'dist/images');
+mix.copy('images/logo.png', 'dist/images');
 
 // ###########################################################################
 
@@ -29,7 +30,7 @@ mix.styles([
     // FRONT - SB-ADMIN THEME CSS
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
     'node_modules/font-awesome/css/font-awesome.min.css',
-    'resources/themes/sb-admin/sb-admin.css',
+    'css/sb-admin.css',
 
 ], 'dist/css/front.css').setPublicPath('dist').version();
 

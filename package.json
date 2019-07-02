@@ -1,6 +1,6 @@
 {
   "name": "ahmeti-core-js",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Ahmeti Core JS",
   "scripts": {
     "dev": "npm run development",
@@ -16,6 +16,10 @@
   },
   "author": "Ahmet Imamoglu",
   "license": "MIT",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0"
+  },
   "devDependencies": {
     "autonumeric": "^1.9.46",
     "bootstrap": "^3.4.0",
