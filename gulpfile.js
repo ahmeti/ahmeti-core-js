@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const clean = require('gulp-clean');
 const rename = require('gulp-rename');
+const gulpSequence = require('gulp-sequence');
 
 gulp.task('DeleteFolderAndFiles', function () {
     return gulp.src([
@@ -81,7 +82,8 @@ gulp.task('CopyViewLayouts', function () {
     ]).pipe(gulp.dest('resources/views/layouts'));
 });
 
-gulp.task('init', [
+
+gulp.task('init', gulpSequence(
     'DeleteFolderAndFiles',
     'CopyAuthAjaxRequest',
     'CopyCoreCss',
@@ -93,4 +95,4 @@ gulp.task('init', [
     'CopyCoreFacades',
     'CopyWebRoutes',
     'CopyViewLayouts'
-]);
+));
