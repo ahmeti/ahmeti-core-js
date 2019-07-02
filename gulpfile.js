@@ -74,6 +74,13 @@ gulp.task('CopyWebRoutes', function () {
     ]).pipe(gulp.dest('routes'));
 });
 
+gulp.task('CopyViewLayouts', function () {
+    return gulp.src([
+        'vendor/ahmeti/core/resources/views/layouts/auth.blade.php',
+        'vendor/ahmeti/core/resources/views/layouts/front.blade.php',
+    ]).pipe(gulp.dest('resources/views/layouts'));
+});
+
 gulp.task('init', [
     'DeleteFolderAndFiles',
     'CopyAuthAjaxRequest',
@@ -85,4 +92,5 @@ gulp.task('init', [
     'CopyModules',
     'CopyCoreFacades',
     'CopyWebRoutes',
+    'CopyViewLayouts'
 ]);

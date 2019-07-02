@@ -1,6 +1,6 @@
 {
   "name": "ahmeti-core-js",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Ahmeti Core JS",
   "scripts": {
     "dev": "npm run development",
@@ -19,7 +19,9 @@
   "dependencies": {
     "gulp": "^3.0.0",
     "gulp-clean": "^0.4.0",
-    "gulp-rename": "^1.4.0"
+    "gulp-rename": "^1.4.0",
+    "cross-env": "^5.2.0",
+    "laravel-mix": "^4.0.16"
   },
   "devDependencies": {
     "autonumeric": "^1.9.46",
@@ -29,7 +31,6 @@
     "bootstrap-tabdrop-ro": "^1.0.0",
     "bootstrap-timepicker": "^0.5.2",
     "chart.js": "^2.8.0",
-    "cross-env": "^5.2.0",
     "datatables.net-dt": "^1.10.19",
     "datatables.net-responsive-dt": "^2.2.3",
     "font-awesome": "^4.0.0",
@@ -37,7 +38,6 @@
     "history.js": "^1.8.0",
     "jquery": "^3.4.0",
     "jquery-form": "^4.2.2",
-    "laravel-mix": "^4.0.16",
     "metismenu": "^2.7.9",
     "moment": "^2.23.0",
     "select2": "^4.0.6-rc.1",
