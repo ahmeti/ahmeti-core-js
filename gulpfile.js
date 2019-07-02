@@ -2,13 +2,6 @@ const gulp = require('gulp');
 const clean = require('gulp-clean');
 const rename = require('gulp-rename');
 
-gulp.task('MoveFolderAndFiles', function() {
-    return gulp.src([
-        'app/User.php'
-    ])
-        .pipe(gulp.dest('app/Modules/User/Models/'));
-});
-
 gulp.task('DeleteFolderAndFiles', function () {
     return gulp.src([
         'resources/js',
@@ -19,7 +12,9 @@ gulp.task('DeleteFolderAndFiles', function () {
         'public/css',
         'public/js',
         'resources/views/layouts/app.blade.php',
-        'app/User.php'
+        'app/User.php',
+        'app/Http/Controllers/Auth',
+        'app/Http/Controllers/HomeController.php'
     ], {read: false})
         .pipe(clean());
 });
@@ -60,13 +55,34 @@ gulp.task('CopyWebpackSample', function () {
         .pipe(gulp.dest('.'));
 });
 
+gulp.task('CopyModules', function () {
+    return gulp.src('vendor/ahmeti/core/app/Modules/**')
+        .pipe(gulp.dest('app/Modules'));
+});
+
+gulp.task('CopyCoreFacades', function () {
+    return gulp.src([
+        'vendor/ahmeti/core/app/Core.php',
+        'vendor/ahmeti/core/app/Form.php',
+        'vendor/ahmeti/core/app/Response.php',
+    ]).pipe(gulp.dest('app'));
+});
+
+gulp.task('CopyWebRoutes', function () {
+    return gulp.src([
+        'vendor/ahmeti/core/routes/web.php',
+    ]).pipe(gulp.dest('routes'));
+});
+
 gulp.task('init', [
-    'MoveFolderAndFiles',
     'DeleteFolderAndFiles',
     'CopyAuthAjaxRequest',
     'CopyCoreCss',
     'CopyCoreJs',
     'CopyCoreFonts',
     'CopyCoreImages',
-    'CopyWebpackSample'
+    'CopyWebpackSample',
+    'CopyModules',
+    'CopyCoreFacades',
+    'CopyWebRoutes',
 ]);
