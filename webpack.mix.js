@@ -14,6 +14,8 @@ let mix = require('laravel-mix');
 mix.copy('node_modules/font-awesome/fonts', 'dist/fonts');
 mix.copy('node_modules/datatables.net-dt/images', 'dist/images');
 mix.copy('images/logo.png', 'dist/images');
+mix.copy('images/favicon.png', 'dist/images');
+mix.copy('images/loading.gif', 'dist/images');
 
 // ###########################################################################
 
@@ -79,8 +81,7 @@ mix.scripts([
     'node_modules/datatables.net-responsive/js/dataTables.responsive.min.js',
     'node_modules/datatables.net-responsive-dt/js/responsive.dataTables.min.js',
 
-    'node_modules/history.js/history.adapter.ender.js',
-    'node_modules/history.js/history.js',
+    'node_modules/history.js/scripts/bundled/html4+html5/jquery.history.js',
 
     'node_modules/jquery-form/dist/jquery.form.min.js',
 

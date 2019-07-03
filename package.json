@@ -1,6 +1,6 @@
 {
   "name": "ahmeti-core-js",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "Ahmeti Core JS",
   "scripts": {
     "dev": "npm run development",
@@ -17,12 +17,12 @@
   "author": "Ahmet Imamoglu",
   "license": "MIT",
   "dependencies": {
+    "cross-env": "^5.2.0",
     "gulp": "^3.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-rename": "^1.4.0",
-    "cross-env": "^5.2.0",
-    "laravel-mix": "^4.0.16",
-    "gulp-sequence": "^1.0.0"
+    "gulp-sequence": "^1.0.0",
+    "laravel-mix": "^4.0.16"
   },
   "devDependencies": {
     "autonumeric": "^1.9.46",
@@ -36,7 +36,7 @@
     "datatables.net-responsive-dt": "^2.2.3",
     "font-awesome": "^4.0.0",
     "fullcalendar": "^3.9.0",
-    "history.js": "^1.8.0",
+    "history.js": "git+https://github.com/browserstate/history.js.git",
     "jquery": "^3.4.0",
     "jquery-form": "^4.2.2",
     "metismenu": "^2.7.9",

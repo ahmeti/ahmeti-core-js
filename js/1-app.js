@@ -508,7 +508,7 @@ var App = {
                     }
                 }
                 $(hedef).empty();
-                $(hedef).html('<div style="text-align:center;padding-top:30px;"><img style="width:100px;" src="'+App.url+'/images/auth/loading.gif" /></div>');
+                $(hedef).html('<div style="text-align:center;padding-top:30px;"><img style="width:100px;" src="'+App.url+'/images/loading.gif" /></div>');
             },
             url: link,
             //data: ,
@@ -661,7 +661,7 @@ var App = {
                         <h3 class="modal-title"><strong>Lütfen Bekleyiniz...</strong></h3>\n\
                     </div>\n\
                     <div id="'+modal_id+'b" class="modal-body" style="'+(modaltype=='iframe' ? 'overflow:hidden !important' : 'overflow-y:auto')+'">\n\
-                        <div style="text-align:center;"><img style="width:100px;" src="'+App.url+'/images/auth/loading.gif" /></div>\n\
+                        <div style="text-align:center;"><img style="width:100px;" src="'+App.url+'/images/loading.gif" /></div>\n\
                     </div>\n\
                 </div>\n\
             </div>';
