@@ -1,6 +1,6 @@
 {
   "name": "ahmeti-core-js",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Ahmeti Core JS",
   "scripts": {
     "dev": "npm run development",

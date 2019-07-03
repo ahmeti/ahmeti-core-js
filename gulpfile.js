@@ -90,8 +90,6 @@ gulp.task('CopyViewVendorPagination', function () {
 });
 
 
-
-
 gulp.task('init', gulpSequence(
     'DeleteFolderAndFiles',
     'CopyAuthAjaxRequest',

@@ -4,6 +4,11 @@
 .color-green{ color: green }
 .color-green-hover:hover, .color-green-hover:active, .color-green-hover:focus{ color: green }
 
+.m-0{ margin: 0 !important }
+.m-1{ margin: 5px !important }
+.m-2{ margin: 10px !important }
+.m-3{ margin: 15px !important }
+
 .mt-0{ margin-top: 0 !important }
 .mt-1{ margin-top: 5px !important }
 .mt-2{ margin-top: 10px !important }
@@ -34,6 +39,10 @@
 .my-2{ margin-top: 10px !important; margin-bottom: 10px !important; }
 .my-3{ margin-top: 15px !important; margin-bottom: 15px !important; }
 
+.p-0{ padding: 0 !important }
+.p-1{ padding: 5px !important }
+.p-2{ padding: 10px !important }
+.p-3{ padding: 15px !important }
 
 .pt-0{ padding-top: 0 !important }
 .pt-1{ padding-top: 5px !important }
