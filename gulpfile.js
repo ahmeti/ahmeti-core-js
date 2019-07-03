@@ -82,6 +82,15 @@ gulp.task('CopyViewLayouts', function () {
     ]).pipe(gulp.dest('resources/views/layouts'));
 });
 
+gulp.task('CopyViewVendorPagination', function () {
+    return gulp.src([
+        'vendor/ahmeti/core/resources/views/vendor/pagination/default.blade.php',
+        'vendor/ahmeti/core/resources/views/vendor/pagination/simple-default.blade.php',
+    ]).pipe(gulp.dest('resources/views/vendor/pagination'));
+});
+
+
+
 
 gulp.task('init', gulpSequence(
     'DeleteFolderAndFiles',
@@ -94,5 +103,6 @@ gulp.task('init', gulpSequence(
     'CopyModules',
     'CopyCoreFacades',
     'CopyWebRoutes',
-    'CopyViewLayouts'
+    'CopyViewLayouts',
+    'CopyViewVendorPagination'
 ));
