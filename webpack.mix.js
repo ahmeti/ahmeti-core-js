@@ -12,6 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix.copy('node_modules/font-awesome/fonts', 'dist/fonts');
+mix.copy('node_modules/bootstrap/fonts', 'dist/fonts');
 mix.copy('node_modules/datatables.net-dt/images', 'dist/images');
 mix.copy('images/logo.png', 'dist/images');
 mix.copy('images/favicon.png', 'dist/images');

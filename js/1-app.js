@@ -381,20 +381,31 @@ var App = {
 
     confirm : function()
     {
-        $(document).on( "click", "a[data-confirm],button[data-confirm]", function(ev) {
-            var href = $(this).attr('href');
-            checkclass = $(this).attr('data-confirm-class');
-            method = $(this).attr('data-method');
+        $(document).on( "click", "a[data-confirm],button[data-confirm]", function(event) {
 
-            if (!$('#dataConfirmModal').length) {
-                $('body').append('<div id="dataConfirmModal" style="z-index:99999992" class="modal" role="dialog" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" style="float:right;font-size:40px;margin-top:-3px;" class="close" data-dismiss="modal" aria-hidden="true">×</button><h2 style="margin-top:0;margin-bottom:0;">UYARI !</h2></div><div class="modal-body"></div><div class="modal-footer"><button class="btn btn-success btn-md" data-dismiss="modal" aria-hidden="true">Hayır</button> <a class="btn btn-danger btn-md" data-dismiss="modal" aria-hidden="true" id="dataConfirmOK" data-method="'+method+'">Evet</a></div></div></div></div>');
-            }
-            $('#dataConfirmModal').find('.modal-body').html($(this).attr('data-confirm'));
-            $('#dataConfirmOK').attr('href', href);
-            $('#dataConfirmOK').addClass(( App.empty(checkclass) ? 'ajaxPage' : checkclass ));
-            $('#dataConfirmModal').modal({show:true});
-            $('#dataConfirmModal').next().css('z-index','99999991');
-            return false;
+            event.preventDefault();
+
+            el = $(this);
+            title = el.attr('data-confirm-title') || 'Are you sure?';
+            url = el.attr('href');
+            checkclass = el.attr('data-confirm-class') || 'ajaxPage';
+            method = el.attr('data-method');
+            text = el.attr('data-confirm');
+
+            Swal.fire({
+                title: title,
+                text: text,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes !'
+            }).then((result) => {
+                if (result.value) {
+                    $('<a target="_blank" class="'+checkclass+'" style="display:none" href="'+ url +'" data-method="'+method+'">-</a>').appendTo($('body'))[0].click();
+                }
+            });
+
         });
     },
 
