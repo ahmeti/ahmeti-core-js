@@ -129,6 +129,8 @@ mix.styles([
 
     'css/tinymce.css',
 
+    'css/colorpicker.css',
+
     'css/helpers.css'
 
 ], 'dist/css/auth.css').setPublicPath('dist').version();
