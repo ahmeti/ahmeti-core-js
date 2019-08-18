@@ -568,6 +568,29 @@ var Form = {
         }
     },
 
+    setColorPicker : function(selector)
+    {
+        if( ! jQuery().colorPicker ){
+            return false;
+        }
+
+        if( typeof selector === 'string' ){
+            selector = $(selector);
+        }else if(typeof selector === 'object' && selector !== null){
+            // continue
+        }else{
+            selector = $("input[data-app-colorpicker='1']");
+        }
+
+        if ( selector.length < 1 ){
+            return false;
+        }
+
+        selector.each(function() {
+            $(this).colorPicker();
+        });
+    },
+
     setAppDataTable : function()
     {
         if ( ($('table[data-app-datatable=1]').length > 0 && jQuery().DataTable) ){

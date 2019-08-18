@@ -767,6 +767,7 @@ var App = {
         Form.setAppTinymce();
         Form.setAppFullCalendar();
         Form.setYearPicker();
+        Form.setColorPicker();
         Form.setAppDataTable();
 
         //app.setTab();

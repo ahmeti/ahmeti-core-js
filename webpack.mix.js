@@ -84,6 +84,8 @@ mix.scripts([
 
     'node_modules/history.js/scripts/bundled/html4+html5/jquery.history.js',
 
+    'node_modules/tinyColorPicker/jqColorPicker.min.js',
+
     'node_modules/jquery-form/dist/jquery.form.min.js',
 
     'js/1-app.js',
