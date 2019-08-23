@@ -1,6 +1,6 @@
 {
   "name": "ahmeti-core-js",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "Ahmeti Core JS",
   "scripts": {
     "dev": "npm run development",
@@ -30,7 +30,6 @@
     "bootstrap-datepicker": "^1.8.0",
     "bootstrap-multiselect": "^0.9.13-1",
     "bootstrap-tabdrop-ro": "^1.0.0",
-    "bootstrap-timepicker": "^0.5.2",
     "chart.js": "^2.8.0",
     "datatables.net-dt": "^1.10.19",
     "datatables.net-responsive-dt": "^2.2.3",

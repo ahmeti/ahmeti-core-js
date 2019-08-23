@@ -67,7 +67,7 @@ mix.scripts([
     'node_modules/fullcalendar/dist/fullcalendar.min.js',
     'node_modules/fullcalendar/dist/locale/tr.js',
 
-    'node_modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js',
+    'libs/bootstrap-timepicker.js',
 
     'node_modules/tinymce/tinymce.min.js',
     'node_modules/tinymce/jquery.tinymce.min.js',
