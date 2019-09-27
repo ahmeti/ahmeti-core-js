@@ -753,6 +753,26 @@ var App = {
         document.body.appendChild(JS);
     },
 
+    exportExcel: function()
+    {
+        $(document).on( "click", ".app-export-excel-button", function(e){
+            e.preventDefault();
+            serializedForm = App.serializeForm($(this).closest('.app-content').find('form[set_filterform=1]')) + 'ajax=no&export=excel';
+
+            if( App.platform === 'cordova' ){
+
+                serializedForm = "'" + serializedForm + "'";
+
+                $('<a style="display:none" href="javascript:void(0)" onclick="CordovaApp.openFile(' + serializedForm +', \'xls\')">ExportExcel</a>')
+                    .appendTo($('body'))[0].click();
+
+            }else{
+                $('<a target="_blank" style="display:none" href="'+serializedForm+'">ExportExcel</a>')
+                    .appendTo($('body'))[0].click();
+            }
+        });
+    },
+
     runAllFunctions : function ()
     {
         $('.nav-tabs').tabdrop();

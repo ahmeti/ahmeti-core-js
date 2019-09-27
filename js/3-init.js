@@ -18,6 +18,7 @@ $(document).ready(function() {
     App.setAppProcess();
     App.subscribeUserToPush();
     App.historyManager();
+    App.exportExcel();
 
     App.runAllFunctions();
 });

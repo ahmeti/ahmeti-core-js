@@ -11,7 +11,9 @@ var Form = {
             .prepend('<div class="alert alert-success" role="alert" style="margin-bottom:7px;padding:5px;border-width:3px">'+
                 '<i class="fa fa-check-circle"></i> ' + getJson.msg + '</div>');
 
-
+        if ( getJson.hasOwnProperty('jscode') && ! App.empty(getJson.jscode) ){
+            setTimeout(function(){ App.addSinglePageJsCode(getJson.jscode); }, 30);
+        }
 
         var hedef = App.getUrlParam('hedef', getJson.gourl);
 
