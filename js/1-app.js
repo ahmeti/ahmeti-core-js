@@ -773,6 +773,11 @@ var App = {
         });
     },
 
+    __ : function(text)
+    {
+        return text;
+    },
+
     runAllFunctions : function ()
     {
         $('.nav-tabs').tabdrop();
