@@ -112,6 +112,21 @@ var Form = {
 
                     dataType: 'json',
 
+                    beforeSerialize: function($form, options) {
+
+                        // İşlemin devam etmesi için TRUE dönmelidir.
+                        beforeSerializeFunc = form.attr('data-before-serialize');
+
+                        if( App.empty(beforeSerializeFunc) ){
+                            return true;
+                        }else{
+                            beforeSerializeFuncParams = beforeSerializeFunc.split(".");
+                            objectName = beforeSerializeFuncParams[0];
+                            methodName = beforeSerializeFuncParams[1];
+                            return window[objectName][methodName]($form, options);
+                        }
+                    },
+
                     beforeSubmit: function (formData, form, options) {
 
                         // Submit Button Start Loading...
@@ -121,7 +136,16 @@ var Form = {
                         submitEl.prop("disabled", true);
 
                         // İşlemin devam etmesi için TRUE dönmelidir.
-                        return true;
+                        beforeSubmitFunc = form.attr('data-before-submit');
+
+                        if( App.empty(beforeSubmitFunc) ){
+                            return true;
+                        }else{
+                            beforeSubmitFuncParams = beforeSubmitFunc.split(".");
+                            objectName = beforeSubmitFuncParams[0];
+                            methodName = beforeSubmitFuncParams[1];
+                            return window[objectName][methodName](form, formData, options);
+                        }
                     },
 
                     complete: function (xhr, textStatus, form) {
@@ -610,26 +634,27 @@ var Form = {
                     orderColumnIndex = orderColumnIndex.length > 0 ? orderColumnIndex[0].cellIndex : 0;
                     orderType = orderType ? orderType : 'desc';
 
-                    responsive = true;
+                    datatableOptions = {
+                        ordering: true,
+                        paging: false,
+                        searching: false,
+                        info: false,
+                        order: orderColumnName ? [[ orderColumnIndex, orderType ]] : []
+                    };
 
                     if( App.isMobile ){
                         // Mobile ise tüm satırları aç.
-                        responsive = {
+                        datatableOptions.responsive = {
                             details: {
                                 display: $.fn.dataTable.Responsive.display.childRowImmediate,
                                 type: ''
                             }
                         };
+                    }else{
+                        datatableOptions.scrollX = true;
                     }
 
-                    var table = $(this).DataTable({
-                        ordering: true,
-                        responsive: responsive,
-                        paging: false,
-                        searching: false,
-                        info: false,
-                        order: orderColumnName ? [[ orderColumnIndex, orderType ]] : []
-                    });
+                    var table = $(this).DataTable(datatableOptions);
 
                     table.on('order.dt', function (data) {
                         if ( isFullTable !== 1 ){
