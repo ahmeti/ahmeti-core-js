@@ -144,7 +144,7 @@ var Form = {
                             beforeSubmitFuncParams = beforeSubmitFunc.split(".");
                             objectName = beforeSubmitFuncParams[0];
                             methodName = beforeSubmitFuncParams[1];
-                            return window[objectName][methodName](form, formData, options);
+                            return window[objectName][methodName](formData, form, options);
                         }
                     },
 
