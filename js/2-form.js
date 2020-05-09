@@ -94,6 +94,21 @@ var Form = {
         }
     },
 
+    formLoading: function(formEl, status)
+    {
+        if( status === true ){
+            submitEl = formEl.find("button[type='submit']");
+            submitEl.find('.fa').show();
+            submitEl.find('.butonLabel').text(submitEl.attr('data-loading-text'));
+            submitEl.prop("disabled", true);
+        }else{
+            submitEl = formEl.find("button[type='submit']");
+            submitEl.find('.fa').hide();
+            submitEl.find('.butonLabel').text(submitEl.attr('data-normal-text'));
+            submitEl.prop("disabled", false);
+        }
+    },
+
     setAppAjaxForm : function ()
     {
         selector = $('form[set_ajaxform=1]');
@@ -114,8 +129,10 @@ var Form = {
 
                     beforeSerialize: function($form, options) {
 
+                        Form.formLoading($form, true);
+
                         // İşlemin devam etmesi için TRUE dönmelidir.
-                        beforeSerializeFunc = form.attr('data-before-serialize');
+                        beforeSerializeFunc = $form.attr('data-before-serialize');
 
                         if( App.empty(beforeSerializeFunc) ){
                             return true;
@@ -128,12 +145,6 @@ var Form = {
                     },
 
                     beforeSubmit: function (formData, form, options) {
-
-                        // Submit Button Start Loading...
-                        submitEl = form.find("button[type='submit']");
-                        submitEl.find('.fa').show();
-                        submitEl.find('.butonLabel').text( submitEl.attr('data-loading-text') );
-                        submitEl.prop("disabled", true);
 
                         // İşlemin devam etmesi için TRUE dönmelidir.
                         beforeSubmitFunc = form.attr('data-before-submit');
@@ -167,12 +178,7 @@ var Form = {
                             $(this).remove();
                         });
 
-
-                        // Submit Button Finish Loading...
-                        submitEl = form.find("button[type='submit']");
-                        submitEl.find('.fa').hide();
-                        submitEl.find('.butonLabel').text( submitEl.attr('data-normal-text') );
-                        submitEl.prop("disabled", false);
+                        Form.formLoading(form, false);
 
                         setTimeout(function () {
                             if (getJson.status == 'yes') {
@@ -639,20 +645,9 @@ var Form = {
                         paging: false,
                         searching: false,
                         info: false,
-                        order: orderColumnName ? [[ orderColumnIndex, orderType ]] : []
+                        order: orderColumnName ? [[ orderColumnIndex, orderType ]] : [],
+                        scrollX: true,
                     };
-
-                    if( App.isMobile ){
-                        // Mobile ise tüm satırları aç.
-                        datatableOptions.responsive = {
-                            details: {
-                                display: $.fn.dataTable.Responsive.display.childRowImmediate,
-                                type: ''
-                            }
-                        };
-                    }else{
-                        datatableOptions.scrollX = true;
-                    }
 
                     var table = $(this).DataTable(datatableOptions);
 
