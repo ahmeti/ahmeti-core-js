@@ -129,8 +129,6 @@ var Form = {
 
                     beforeSerialize: function($form, options) {
 
-                        Form.formLoading($form, true);
-
                         // İşlemin devam etmesi için TRUE dönmelidir.
                         beforeSerializeFunc = $form.attr('data-before-serialize');
 
@@ -145,6 +143,8 @@ var Form = {
                     },
 
                     beforeSubmit: function (formData, form, options) {
+
+                        Form.formLoading($form, true);
 
                         // İşlemin devam etmesi için TRUE dönmelidir.
                         beforeSubmitFunc = form.attr('data-before-submit');
