@@ -127,10 +127,10 @@ var Form = {
 
                     dataType: 'json',
 
-                    beforeSerialize: function($form, options) {
+                    beforeSerialize: function(form, options) {
 
                         // İşlemin devam etmesi için TRUE dönmelidir.
-                        beforeSerializeFunc = $form.attr('data-before-serialize');
+                        beforeSerializeFunc = form.attr('data-before-serialize');
 
                         if( App.empty(beforeSerializeFunc) ){
                             return true;
@@ -138,13 +138,13 @@ var Form = {
                             beforeSerializeFuncParams = beforeSerializeFunc.split(".");
                             objectName = beforeSerializeFuncParams[0];
                             methodName = beforeSerializeFuncParams[1];
-                            return window[objectName][methodName]($form, options);
+                            return window[objectName][methodName](form, options);
                         }
                     },
 
                     beforeSubmit: function (formData, form, options) {
 
-                        Form.formLoading($form, true);
+                        Form.formLoading(form, true);
 
                         // İşlemin devam etmesi için TRUE dönmelidir.
                         beforeSubmitFunc = form.attr('data-before-submit');
