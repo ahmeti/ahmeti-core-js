@@ -386,7 +386,7 @@ var App = {
             event.preventDefault();
 
             el = $(this);
-            title = el.attr('data-confirm-title') || 'Are you sure?';
+            title = el.attr('data-confirm-title') || 'Devam etmek istiyor musunuz?';
             url = el.attr('href');
             checkclass = el.attr('data-confirm-class') || 'ajaxPage';
             method = el.attr('data-method');
@@ -399,7 +399,8 @@ var App = {
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes !'
+                confirmButtonText: 'Evet !',
+                cancelButtonText: 'Vazgeç'
             }).then((result) => {
                 if (result.value) {
                     $('<a target="_blank" class="'+checkclass+'" style="display:none" href="'+ url +'" data-method="'+method+'">-</a>').appendTo($('body'))[0].click();
