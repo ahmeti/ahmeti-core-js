@@ -489,6 +489,17 @@ var Form = {
                         options.endDate = $(this).data('app-end-date');
                     }
 
+                    if( $(this).data('app-format') ){
+
+                        let format = $(this).data('app-format')
+
+                        if( format === 'd.m.Y' ){
+                            options.format = 'dd.mm.yyyy';
+                        }else if( format === 'Y-m-d' ){
+                            options.format = 'yyyy-mm-dd';
+                        }
+                    }
+
                     $(this).datepicker(options);
                 });
             }
