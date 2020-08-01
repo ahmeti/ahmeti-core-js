@@ -636,55 +636,74 @@ var Form = {
 
     setAppDataTable : function()
     {
-        if ( ($('table[data-app-datatable=1]').length > 0 && jQuery().DataTable) ){
+        if( ! jQuery().DataTable ){
+            return false;
+        }
 
-            $('table[data-app-datatable=1]').each(function() {
+        const selector = $('table[data-app-datatable=1]');
 
-                if ( $(this).attr('data-app-init') != "1" ){
+        if( selector.length < 1 ){
+            return false;
+        }
 
-                    $(this).attr('data-app-init', 1);
+        selector.each(function() {
 
-                    var isFullTable = $(this).data('fulldatatable');
-                    var orderColumnName = $(this).data('order-column');
-                    var orderType = $(this).data('order-type');
-                    var orderColumnIndex = $(this).find('[data-name="'+orderColumnName+'"]');
-                    orderColumnIndex = orderColumnIndex.length > 0 ? orderColumnIndex[0].cellIndex : 0;
-                    orderType = orderType ? orderType : 'desc';
+            let isInit = Number($(this).attr('data-app-init')) || 0;
 
-                    datatableOptions = {
-                        ordering: true,
-                        paging: false,
-                        searching: false,
-                        info: false,
-                        order: orderColumnName ? [[ orderColumnIndex, orderType ]] : [],
-                        scrollX: true,
-                    };
+            if ( isInit > 0 ){
+                return false;
+            }
 
-                    var table = $(this).DataTable(datatableOptions);
+            $(this).attr('data-app-init', 1);
 
-                    table.on('order.dt', function (data) {
-                        if ( isFullTable !== 1 ){
+            let isFullTable = Number($(this).data('fulldatatable')) || 0;
+            let orderColumnName = $(this).data('order-column');
+            let orderType = $(this).data('order-type') || 'desc';
+            let orderColumnIndex = $(this).find('[data-name="'+orderColumnName+'"]');
+            orderColumnIndex = orderColumnIndex.length > 0 ? orderColumnIndex[0].cellIndex : 0;
 
-                            var order = table.order();
-                            var column = order[0][0];
-                            var orderType = order[0][1];
+            let datatableOptions = {
+                ordering: true,
+                paging: false,
+                searching: false,
+                info: false,
+                order: orderColumnName ? [[ orderColumnIndex, orderType ]] : [],
+                scrollX: true,
+            };
 
-                            var header = table.column(column).header();
-                            var orderColumn = $(header).data('name');
+            let table = $(this).DataTable(datatableOptions);
 
-                            var filterId = $(table.settings()[0].nTable).data('appFilterid');
+            table.on('order.dt', function (data) {
 
-                            if (filterId){
-                                $('#'+filterId).find('input[name=orderByCol]').val(orderColumn)
-                                $('#'+filterId).find('input[name=orderByType]').val(orderType)
-                                table.destroy();
-                                $('#'+filterId).find('.filterFormButton').trigger('click');
-                            }
+                if ( isFullTable !== 1 ){
+
+                    let order = table.order();
+                    let column = order[0][0];
+                    let orderType = order[0][1];
+
+                    let header = table.column(column).header();
+                    let orderColumn = $(header).data('name');
+
+                    let filterId = $(table.settings()[0].nTable).data('appFilterid');
+
+                    if ( filterId ){
+
+                        let filterSelector = $('#' + filterId);
+
+                        if( App.orderColumnName && App.orderTypeName ){
+                            filterSelector.find('input[name='+App.orderColumnName+']').val(orderColumn)
+                            filterSelector.find('input[name='+App.orderTypeName+']').val(orderType)
+                        }else{
+                            filterSelector.find('input[name=orderByCol]').val(orderColumn)
+                            filterSelector.find('input[name=orderByType]').val(orderType)
                         }
-                    });
+
+                        table.destroy();
+                        filterSelector.find('.filterFormButton').trigger('click');
+                    }
                 }
             });
-        }
+        });
     },
 
     cleanForm : function(form_id)

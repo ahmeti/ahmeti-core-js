@@ -12,6 +12,9 @@ var App = {
 
     platform: baseApp.platform,
 
+    orderColumnName: baseApp.orderColumnName ? baseApp.orderColumnName : null,
+    orderTypeName: baseApp.orderTypeName ? baseApp.orderTypeName : null,
+
     changeItem: false,
 
     serviceWorker: false,
