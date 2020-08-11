@@ -43,7 +43,7 @@
     "select2": "^4.0.6-rc.1",
     "sweetalert2": "^7.33.1",
     "tinyColorPicker": "git+https://github.com/PitPik/tinyColorPicker.git",
-    "tinymce": "4.8.2"
+    "tinymce": "4.9.11"
   },
   "resolutions": {
     "graceful-fs": "4.2.3"
