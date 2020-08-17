@@ -1,32 +1,30 @@
-var App = {
+window.App = {
 
-    googleAnalyticsId: null, // UA-27241XXX-2
-
+    // BASE APP START
     company_uuid: baseApp.company_uuid,
-
     url : baseApp.url,
-
     userid : baseApp.userid,
-
     isMobile : baseApp.isMobile,
-
+    appEnv : baseApp.appEnv,
     platform: baseApp.platform,
-
-    orderColumnName: baseApp.orderColumnName ? baseApp.orderColumnName : null,
-    orderTypeName: baseApp.orderTypeName ? baseApp.orderTypeName : null,
+    orderColumnName: baseApp.orderColumnName,
+    orderTypeName: baseApp.orderTypeName,
+    lang: baseApp.lang,
+    decSep: baseApp.decSep,
+    thoSep: baseApp.thoSep,
+    confirmContinueButtonText: baseApp.confirmContinueButtonText,
+    confirmCancelButtonText: baseApp.confirmCancelButtonText,
+    pushNotificationStatus: baseApp.pushNotificationStatus,
+    googleAnalyticsId: baseApp.googleAnalyticsId,
+    // BASE APP FINISH
 
     changeItem: false,
-
     serviceWorker: false,
-
     isPushPermission: false,
-
     currentUrl: window.location.href,
 
     // Sayfaya dahil edilmiş dosyaları tutar...
-    included : [
-    ],
-
+    included : [],
     files : {
         raphael   : 'js/raphael/raphael.js',
         mapturkey : 'js/map/turkey.js',
@@ -50,7 +48,16 @@ var App = {
 
     askPushPermission: function ()
     {
-        return new Promise(function(resolve, reject) {
+        if( App.pushNotificationStatus !== true ){
+            return false;
+        }
+
+        if ( ! ('PushManager' in window) ) {
+            // Push isn't supported on this browser, disable or hide UI.
+            return false;
+        }
+
+        new Promise(function(resolve, reject) {
             const permissionResult = Notification.requestPermission(function(result) {
                 resolve(result);
             });
@@ -58,17 +65,7 @@ var App = {
             if (permissionResult) {
                 permissionResult.then(resolve, reject);
             }
-        });
-    },
-
-    subscribeUserToPush : function()
-    {
-        if ( ! ('PushManager' in window) ) {
-            // Push isn't supported on this browser, disable or hide UI.
-            return false;
-        }
-
-        App.askPushPermission().then(function (permissionResult) {
+        }).then(function (permissionResult) {
             if (permissionResult === 'granted') {
                 App.isPushPermission = true;
                 pushAdapter.start();
