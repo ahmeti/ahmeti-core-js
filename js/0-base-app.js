@@ -1,0 +1,17 @@
+const baseApp = {
+    company_uuid: null,
+    url: '/',
+    userid: '',
+    isMobile: true,
+    appEnv: 'local',
+    platform: 'web',
+    orderColumnName: 'order_column',
+    orderTypeName: 'order_type',
+    lang: 'tr',
+    decSep: ',',
+    thoSep: '.',
+    confirmContinueButtonText: 'Evet !',
+    confirmCancelButtonText: 'Vazgeç !',
+    pushNotificationStatus: false,
+    googleAnalyticsId: null,
+}
