@@ -16,7 +16,7 @@ $(document).ready(function() {
     App.setChangeItem();
     App.modalRemove();
     App.setAppProcess();
-    App.subscribeUserToPush();
+    App.askPushPermission();
     App.historyManager();
     App.exportExcel();
 
