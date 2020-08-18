@@ -385,25 +385,24 @@ window.App = {
 
             event.preventDefault();
 
-            el = $(this);
-            title = el.attr('data-confirm-title') || __('Devam etmek istiyor musunuz?');
-            url = el.attr('href');
-            checkclass = el.attr('data-confirm-class') || 'ajaxPage';
-            method = el.attr('data-method');
-            text = el.attr('data-confirm');
+            let el = $(this);
+            let url = el.attr('href');
+            let checkClass = el.attr('data-confirm-class') || 'ajaxPage';
+            let method = el.attr('data-method');
 
             Swal.fire({
-                title: title,
-                text: text,
+                title: el.attr('data-confirm-title') || null,
+                text: el.attr('data-confirm'),
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: __('Evet !'),
-                cancelButtonText: __('Vazgeç')
+                confirmButtonText: App.confirmContinueButtonText,
+                cancelButtonText: App.confirmCancelButtonText
             }).then((result) => {
                 if (result.value) {
-                    $('<a target="_blank" class="'+checkclass+'" style="display:none" href="'+ url +'" data-method="'+method+'">-</a>').appendTo($('body'))[0].click();
+                    $('<a target="_blank" class="'+checkClass+'" style="display:none" href="'+ url +'" data-method="'+method+'">-</a>')
+                        .appendTo($('body'))[0].click();
                 }
             });
 
@@ -414,8 +413,7 @@ window.App = {
     autoCloseMenu : function()
     {
         $(document).on("click", ".ajaxPage", function(){
-            $('.sidebar-nav').removeClass('in');
-            $('.sidebar-nav').addClass('collapse');
+            $('.sidebar-nav').removeClass('in').addClass('collapse');
         });
     },
 
