@@ -640,19 +640,13 @@ var Form = {
             return false;
         }
 
-        const selector = $('table[data-app-datatable=1]');
+        const selector = $("table[data-app-datatable='1']:not([data-app-init])");
 
         if( selector.length < 1 ){
             return false;
         }
 
         selector.each(function() {
-
-            let isInit = Number($(this).attr('data-app-init')) || 0;
-
-            if ( isInit > 0 ){
-                return false;
-            }
 
             $(this).attr('data-app-init', 1);
 
