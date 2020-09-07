@@ -586,28 +586,24 @@ window.App = {
         return new Date().valueOf();
     },
 
-    numberFormat: function(number, decimals, dec_point, thousands_sep)
-    {
-        number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
-        var n = !isFinite(+number) ? 0 : +number,
-            prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-            sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-            dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-            s = '',
-            toFixedFix = function (n, prec) {
-                var k = Math.pow(10, prec);
-                return '' + Math.round(n * k) / k;
-            };
-        // Fix for IE parseFloat(0.55).toFixed(0) = 0;
-        s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-        if (s[0].length > 3) {
-            s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+    numberFormat: function (value, decimals, decPoint, thousandsSep){
+        decPoint = decPoint || '.';
+        decimals = decimals !== undefined ? decimals : 2;
+        thousandsSep = thousandsSep || ' ';
+
+        if (typeof value === 'string') {
+            value = parseFloat(value);
         }
-        if ((s[1] || '').length < prec) {
-            s[1] = s[1] || '';
-            s[1] += new Array(prec - s[1].length + 1).join('0');
-        }
-        return s.join(dec);
+
+        let result = value.toLocaleString('en-US', {
+            maximumFractionDigits: decimals,
+            minimumFractionDigits: decimals
+        });
+
+        let pieces = result.split('.');
+        pieces[0] = pieces[0].split(',').join(thousandsSep);
+
+        return pieces.join(decPoint);
     },
 
     setAppProcess : function()
@@ -768,6 +764,23 @@ window.App = {
             }else{
                 $('<a target="_blank" style="display:none" href="'+serializedForm+'">ExportExcel</a>')
                     .appendTo($('body'))[0].click();
+            }
+        });
+    },
+
+    filterFormSubmit: function()
+    {
+        $(document).on( "click", ".filterFormButton", function(e) {
+
+            e.preventDefault();
+            var formData=$(this).closest("form");
+
+            hedef=$('#'+formData.attr('id')+" input[name=hedef]").val();
+
+            if ( ! App.empty(hedef) && hedef!=='ajaxPageContainer'){
+                $('<a style="display:none" data-modal-size="xl" class="app-process" href="'+App.serializeForm(formData)+'">-</a>').appendTo($('body')).click().remove();
+            }else{
+                App.goAjaxUrl(App.serializeForm(formData), false);
             }
         });
     },
